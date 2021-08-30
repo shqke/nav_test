@@ -20,11 +20,15 @@ jobs:
       - name: Setting up Python
         uses: actions/setup-python@v2
           
+      - name: Install/Update dependencies
+        shell: bash
+        run: |
+          python -m pip install binary_reader --upgrade pip
+          
       - name: Generate NAV dump files
         shell: bash
         working-directory: repo
         run: |
-          python -m pip install binary_reader --upgrade pip
           python .github/navdump.py -o .gen/nav root/maps/*.nav
           
       - name: Commit changes
