@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'root/maps/**.nav'
+      - '.github/workflows/main.yml'
   workflow_dispatch:
   
 jobs:
@@ -23,6 +24,7 @@ jobs:
         shell: bash
         working-directory: repo
         run: |
+          python -m pip install binary_reader --upgrade pip
           python .github/navdump.py -o .gen/nav root/maps/*.nav
           
       - name: Commit changes
