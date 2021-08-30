@@ -23,7 +23,7 @@ jobs:
         shell: bash
         working-directory: repo
         run: |
-          python ../.github/navdump.py
+          python .github/navdump.py -o .gen/nav root/maps/*.nav
           
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
